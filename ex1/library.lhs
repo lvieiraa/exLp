@@ -29,7 +29,7 @@
 
 > combine2 :: (Int,Int) -> String
 > combine2 (t,u)
->   | u == 1  && t == 0        = units!!1 ++ " real."
+>   | u == 1  && t == 0        = units!!1 ++ " reais."
 >   | t==0                     = units!!u  ++ " reais."
 >   | t==1                     = teens!!u  ++ " reais."
 >   | 2<=t && u==0             = tens!!(t-2)  ++ " reais."
@@ -54,8 +54,8 @@
 
 > combine4 :: (Int,Int,Int) -> String
 > combine4 (t,u,z)
->   | t==0 && u == 0                   = convert2(z)
->   | t == 0 && u == 1 && u == 0       = "Cem "
->   | u>=1                             = hundreds!!(u-1) ++" e " ++ convert2(z)
->   | 2<=t && u==0                     = tens!!(t-2)  ++ " reais"
->   | 2<=t && u/=0                     = tens!!(t-2) ++ " e " ++ units!!u ++ " reais"
+>   | t == 0 && u == 0                   = convert2(z)
+>   | t == 0 && u == 1 && z == 0       = "Cem "
+>   | u >=1                             = hundreds!!(u-1) ++" e " ++ convert2(z)
+>   | 2 <=t && u == 0                     = tens!!(t-2)  ++ " reais"
+>   | 2 <=t && u /= 0                     = tens!!(t-2) ++ " e " ++ units!!u ++ " reais"
