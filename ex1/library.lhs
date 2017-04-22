@@ -21,6 +21,9 @@
 > convert2 :: Int -> String
 > convert2 = combine2 . digits2
 
+> convertMil :: Int -> String
+> convertMil = combineMil . digits2
+
 > convert3 :: Int -> String
 > convert3 = combine3 . digits3
 
@@ -54,8 +57,8 @@
 
 > combine4 :: (Int,Int,Int) -> String
 > combine4 (t,u,z)
->   | t == 0 && u == 0                   = convert2(z)
+>   | t == 0 && u == 0                 = convert2(z)
 >   | t == 0 && u == 1 && z == 0       = "Cem "
->   | u >=1                             = hundreds!!(u-1) ++" e " ++ convert2(z)
->   | 2 <=t && u == 0                     = tens!!(t-2)  ++ " reais"
->   | 2 <=t && u /= 0                     = tens!!(t-2) ++ " e " ++ units!!u ++ " reais"
+>   | t == 0 && u >= 1 && z >  0       = hundreds!!(u-1) ++" e " ++ convert2(z)
+>   | t >= 1 && u >= 1 && z >  0       = convertMil(t) ++ hundreds!!(u-1) ++" e " ++ convert2(z)
+>   | 2 <=t && u /= 0                  = tens!!(t-2) ++ " e " ++ units!!u ++ " reais"
