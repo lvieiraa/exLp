@@ -40,11 +40,11 @@
 
 > combineMil :: (Int,Int) -> String
 > combineMil (t,u)
->   | u== 1         = units!!1 ++ " mil, "
->   | t==0          = units!!u  ++ " mil, "
->   | t==1          = teens!!u  ++ " mil, "
->   | 2<=t && u==0  = tens!!(t-2)  ++ " mil, "
->   | 2<=t && u/=0  = tens!!(t-2) ++ " e " ++ units!!u ++ " mil, "
+>   | u== 1         = units!!1 ++ " mil "
+>   | t==0          = units!!u  ++ " mil "
+>   | t==1          = teens!!u  ++ " mil "
+>   | 2<=t && u==0  = tens!!(t-2)  ++ " mil "
+>   | 2<=t && u/=0  = tens!!(t-2) ++ " e " ++ units!!u ++ " mil "
 
 
 
@@ -60,5 +60,7 @@
 >   | t == 0 && u == 0                 = convert2(z)
 >   | t == 0 && u == 1 && z == 0       = "Cem "
 >   | t == 0 && u >= 1 && z >  0       = hundreds!!(u-1) ++" e " ++ convert2(z)
+>   | t >= 1 && u == 0 && z /= 0       = convertMil(t) ++ " e " ++ convert2(z)
+>   | t >= 1 && u == 0 && z == 0       = convertMil(t) ++ " ."
 >   | t >= 1 && u >= 1 && z >  0       = convertMil(t) ++ hundreds!!(u-1) ++" e " ++ convert2(z)
 >   | 2 <=t && u /= 0                  = tens!!(t-2) ++ " e " ++ units!!u ++ " reais"
